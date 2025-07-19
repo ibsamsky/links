@@ -27,8 +27,6 @@ static REL_REGEX: LazyLock<[Regex; 1]> =
 
 #[tracing::instrument(skip_all, fields(base = %base))]
 fn parse_links(base: &Url, body: String) -> HashSet<Url> {
-    // let absolute_patterns = [r"https?://(?:[\w\d-]+\.)+\w+(?:/[\w\d\-._~?#&]+)*/?"];
-    // let relative_patterns = [r#"(?i)<a\s+[^>]*href\s*=\s*['"]([^'"]+)['"][^>]*>"#]; // it's a little evil
     let mut urls = HashSet::new();
 
     for re in ABS_REGEX.iter() {
